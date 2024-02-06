@@ -1,0 +1,98 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.9.8 (Oracle Corporation Java 20.0.1)
+[debug] Load.defaultLoad until apply took 196.9517ms
+[debug]           Load.loadUnit: plugins took 144.1052ms
+[debug]           Load.loadUnit: defsScala took 0.505101ms
+[debug] [Loading] Scanning directory C:\Users\agrab\IdeaProjects\ProyectoBimestral\project
+[debug]             Load.loadUnit: mkEval took 12.092ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\agrab\IdeaProjects\ProyectoBimestral\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 22.259 ms
+[info] loading settings for project proyectobimestral-build from plugins.sbt ...
+[debug]               Load.resolveProject(proyectobimestral-build) took 82.906501ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id proyectobimestral-build, base: C:\Users\agrab\IdeaProjects\ProyectoBimestral\project, plugins: List(<none>))) took 121.6583ms
+[debug] [Loading] Done in C:\Users\agrab\IdeaProjects\ProyectoBimestral\project, returning: (proyectobimestral-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 3303.3881ms
+[debug]           Load.loadUnit: cleanEvalClasses took 11.8076ms
+[debug]         Load.loadUnit(file:/C:/Users/agrab/IdeaProjects/ProyectoBimestral/project/, ...) took 3470.3758ms
+[debug]       Load.apply: load took 3638.1781ms
+[debug]       Load.apply: resolveProjects took 6.36ms
+[debug]       Load.apply: finalTransforms took 89.0243ms
+[debug]       Load.apply: config.delegates took 12.5241ms
+[debug]       Load.apply: Def.make(settings)... took 530.124001ms
+[debug]       Load.apply: structureIndex took 145.6347ms
+[debug]       Load.apply: mkStreams took 1.9811ms
+[info] loading project definition from C:\Users\agrab\IdeaProjects\ProyectoBimestral\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 8003.557501ms
+[debug]     Load.loadUnit: defsScala took 0.0045ms
+[debug] [Loading] Scanning directory C:\Users\agrab\IdeaProjects\ProyectoBimestral
+[debug]       Load.loadUnit: mkEval took 0.5256ms
+[debug] [Loading] Found root project root w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbtide.ConfigPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 7.2243 ms
+[info] loading settings for project root from build.sbt ...
+[debug]         Load.resolveProject(root) took 2.7023ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: C:\Users\agrab\IdeaProjects\ProyectoBimestral, plugins: List(<none>))) took 11.6789ms
+[debug] [Loading] Done in C:\Users\agrab\IdeaProjects\ProyectoBimestral, returning: (root)
+[debug]     Load.loadUnit: loadedProjectsRaw took 2268.821601ms
+[debug]     Load.loadUnit: cleanEvalClasses took 17.0625ms
+[debug]   Load.loadUnit(file:/C:/Users/agrab/IdeaProjects/ProyectoBimestral/, ...) took 10292.7019ms
+[debug] Load.apply: load took 10382.749ms
+[debug] Load.apply: resolveProjects took 0.243799ms
+[debug] Load.apply: finalTransforms took 27.6346ms
+[debug] Load.apply: config.delegates took 0.6478ms
+[debug] Load.apply: Def.make(settings)... took 110.599899ms
+[debug] Load.apply: structureIndex took 49.169101ms
+[debug] Load.apply: mkStreams took 0.002401ms
+[info] set current project to ProyectoBimestral (in build file:/C:/Users/agrab/IdeaProjects/ProyectoBimestral/)
+[warn] there's a key that's not used by any other settings/tasks:
+[warn]  
+[warn] * root / idePackagePrefix
+[warn]   +- C:\Users\agrab\IdeaProjects\ProyectoBimestral\build.sbt:8
+[warn]  
+[warn] note: a setting might still be used by a command; to exclude a key from this `lintUnused` check
+[warn] either append it to `Global / excludeLintKeys` or call .withRank(KeyRanks.Invisible) on the key
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(shell, None, None)
+[info] sbt server started at local:sbt-server-fb330d89b2ad522685d4
+[debug] Writing bsp connection file
+[info] started sbt server
