@@ -9,5 +9,11 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       "com.github.tototoshi" %% "scala-csv" % "1.3.10",
       "io.github.pityka"     %% "nspl-awt" % "0.10.0",
+      "io.github.pityka"     %% "nspl-saddle" % "0.10.0",
       "io.github.pityka"     %% "nspl-core" % "0.10.0")
   )
+
+
+
+// https://mvnrepository.com/artifact/io.github.pityka/nspl-saddle
+libraryDependencies += "io.github.pityka" %% "nspl-saddle" % "0.10.0"
