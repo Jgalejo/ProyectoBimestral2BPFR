@@ -49,23 +49,10 @@ object App {
       pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\Graficas\\Grafica1.png"), histogramData.build, 1000)
     }
 
-
-    charting2(contentFile)
+    
+    charting2(contentFile2)
 
     def charting2(data: List[Map[String, String]]): Unit = {
-      val dorsalesjugador = data
-        .filter(row => row("players_defender") == "1" && row("squads_shirt_number") != "0")
-        .map(row => row("squads_shirt_number").toDouble)
-
-      val plotBx = boxplot(dorsalesjugador)(par)
-
-      pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\Graficas\\Grafica2.png"), plotBx.build, 1000)
-    }
-
-
-    charting3(contentFile2)
-
-    def charting3(data: List[Map[String, String]]): Unit = {
       val goalsFrequency: List[(Double, Double)] = data
         .filter(_("goals_minute_regulation") != "NA")
         .filter(_("matches_tournament_id") == "WC-2022")
@@ -89,9 +76,9 @@ object App {
       pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\Graficas\\Grafica3.png"), plot8.build, 1000)
     }
 
-    charting4(contentFile)
+    charting3(contentFile)
 
-    def charting4(data: List[Map[String, String]]): Unit = {
+    def charting3(data: List[Map[String, String]]): Unit = {
       val dorslaesgoat: List[(Double, Double)] = data
         .filter(row => (row("players_given_name") == "Lionel" && row("players_family_name") == "Messi") ||
           (row("players_given_name") == "Cristiano" && row("players_family_name") == "Ronaldo"))
@@ -118,9 +105,9 @@ object App {
       pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\Graficas\\Grafica4.png"), plot8.build, 1000)
     }
 
-    charting5(contentFile2)
+    charting4(contentFile2)
 
-    def charting5(data: List[Map[String, String]]): Unit = {
+    def charting4(data: List[Map[String, String]]): Unit = {
       val golexMundial = data
         .map(row => (
           row("matches_tournament_id").stripPrefix("WC-").toDouble,
@@ -146,9 +133,9 @@ object App {
 
     }
 
-    charting6(contentFile2)
+    charting5(contentFile2)
 
-    def charting6(data: List[Map[String, String]]): Unit = {
+    def charting5(data: List[Map[String, String]]): Unit = {
       val penalgolArg: List[(Double, Double)] = data
         .filter(_("goals_penalty") != "NA")
         .filter(row => (
@@ -158,7 +145,7 @@ object App {
           row("goals_penalty").toDouble
         ))
         .groupBy(_._1)
-        .mapValues(_.map(_._2).sum)
+        .view.mapValues(_.map(_._2).sum)
         .toList
         .sortBy(_._1)
         .reverse
@@ -179,14 +166,14 @@ object App {
       pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\Graficas\\Grafico6.png"), plot8.build, 1000)
 
 
-      charting7(contentFile2)
+      charting6(contentFile2)
 
-      def charting7(data: List[Map[String, String]]): Unit = {
+      def charting6(data: List[Map[String, String]]): Unit = {
         val conteoequipostorneo = data
           .map(row => (row("tournaments_year").toDouble, row("tournaments_count_teams").toDouble))
           .distinct
           .groupBy(_._2)
-          .mapValues(_.head)
+          .view.mapValues(_.head)
           .values
           .toList
           .sortBy(_._2)
@@ -205,8 +192,9 @@ object App {
         pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\Graficas\\Grafico7.png"), plot8.build, 1000)
 
 
-        charting8(contentFile)
-        def charting8(data: List[Map[String, String]]): Unit = {
+        charting7(contentFile)
+
+        def charting7(data: List[Map[String, String]]): Unit = {
           val dorsalesjugador = data
             .filter(row => row("players_defender") == "1" && row("squads_shirt_number") != "0")
             .map(row => row("squads_shirt_number").toDouble)
@@ -217,7 +205,6 @@ object App {
               .ylab("Frq")
               .main("Dorsales mas usados por los defensores")
           )
-
 
 
           pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\Graficas\\Grafica8.png"), histogramData2.build, 1000)

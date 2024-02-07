@@ -146,8 +146,20 @@ object App {
     println("Jugadores mas jovenes en disputar un Mundial:")
     youngestPlayerPerWorldCup()
 
+    def mundialesjugados(data: List[Map[String, String]]) = {
+      val conteomundiales = data
+        .map(_("tournaments_year"))
+        .map(_.toInt)
+        .distinct
 
+      conteomundiales.length
 
     }
+
+    println("")
+    println(s"Cantidad de mundiales jugados(masculino y femeninos):${mundialesjugados(contentFile)} ")
+
+    
+  }
 
 }
