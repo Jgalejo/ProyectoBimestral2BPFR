@@ -15,5 +15,5 @@ lazy val root = (project in file("."))
 
 
 
-// https://mvnrepository.com/artifact/io.github.pityka/nspl-saddle
+
 libraryDependencies += "io.github.pityka" %% "nspl-saddle" % "0.10.0"

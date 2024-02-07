@@ -85,7 +85,6 @@ object App {
     println("")
 
 
-
     def frecuenciajugadores(data: List[Map[String, String]]) = {
       val jugadores = data
         .distinct
@@ -122,6 +121,7 @@ object App {
       dorsalesjugador
 
     }
+
     println("")
     println(s"El dorsal mas común en los defensores es: ${dorsalmoda(contentFile2)}")
 
@@ -141,23 +141,13 @@ object App {
         println(s"List($playerId,$familyName,$givenName,$birthYear)")
       }
     }
+
     println("")
     println("Jugadores mas jovenes en disputar un Mundial:")
     youngestPlayerPerWorldCup()
 
-    def frecuenciagolestiempo(data: List[Map[String, String]]) = {
-      val dorsalesjugador = data
-        .distinct
-        .filter(row => row("players_defender") == "1")
-        .map(_("squads_shirt_number"))
-        .groupBy(identity)
-        .view.mapValues(_.size)
-        .toList
-        .maxBy(_._2)
 
-      dorsalesjugador
 
     }
 
-  }
 }
