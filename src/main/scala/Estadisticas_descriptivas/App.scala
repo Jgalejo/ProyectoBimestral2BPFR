@@ -59,6 +59,32 @@ object App {
     println(s"El promedio de espectadores en los mundiales es: ${promedioCapacidadEstadio(contentFile)}")
     println("")
 
+    def maximoGolminutoQatar(data: List[Map[String, String]]): Int =
+      data
+        .filter(row => (row("matches_tournament_id") == "WC-2022" && row("goals_minute_regulation") != "NA"))
+        .map(_("goals_minute_regulation").toInt)
+        .max
+
+    println(s"Gol mas tardío en Qatar 2022: ${maximoGolminutoQatar(contentFile)}")
+    println("")
+
+    def minimoGolminutoQatar(data: List[Map[String, String]]): Int =
+      data
+        .filter(row => (row("matches_tournament_id") == "WC-2022" && row("goals_minute_regulation") != "NA"))
+        .map(_("goals_minute_regulation").toInt)
+        .min
+
+    println(s"Gol mas temprano en Qatar 2022: ${minimoGolminutoQatar(contentFile)}")
+    println("")
+
+    def promedioGolminutoQatar(data: List[Map[String, String]]): Int =
+      val promedio = data.filter(row => row("goals_minute_regulation") != "NA" && row("matches_tournament_id") == "WC-2022").map(_("goals_minute_regulation").toInt).distinct
+      promedio.sum / promedio.length
+
+    println(s"Promedio de minuto gol: ${promedioGolminutoQatar(contentFile)}")
+    println("")
+
+
 
     def frecuenciajugadores(data: List[Map[String, String]]) = {
       val jugadores = data

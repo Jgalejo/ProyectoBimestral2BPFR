@@ -22,7 +22,7 @@ implicit object CustomFormat extends DefaultCSVFormat {
 object App {
   @main
   def pintegra() = {
-    
+
     val pathDataFile: String = "C:\\Users\\agrab\\Documents\\ArchivoPIntegrador/dsAlineacionesXTorneo.csv"
     val pathDataFile2: String = "C:\\Users\\agrab\\Documents\\ArchivoPIntegrador/dsPartidosYGoles.csv"
     val reader1 = CSVReader.open(new File(pathDataFile))
@@ -32,9 +32,8 @@ object App {
     reader1.close()
     reader2.close()
 
-    
-    charting(contentFile)
 
+    charting(contentFile)
     def charting(data: List[Map[String, String]]): Unit = {
       val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
       val birthYears = contentFile.filter(row => row("players_birth_date") != "" && row("players_birth_date") != "not available").map(row => LocalDate.parse(row("players_birth_date"), dateFormat).getYear.toDouble)
@@ -42,61 +41,75 @@ object App {
         par
           .xlab("Años")
           .ylab("Frq")
-          .main("Años de nacimiento mas cómunes en los mundiales")
+          .main("Años de nacimiento de futbolistas mas cómunes en los mundiales")
       )
       pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\histograma1.png"), histogramData.build, 1000)
     }
 
-    charting2(contentFile)
 
-    def charting2(data: List[Map[String, String]]) =
+    charting2(contentFile)
+    def charting2(data: List[Map[String, String]]):Unit = {
       val dorsalesjugador = data
         .filter(row => row("players_defender") == "1" && row("squads_shirt_number") != "0")
         .map(row => row("squads_shirt_number").toDouble)
-        .take(50)
-
-
 
       val plotBx = boxplot(dorsalesjugador)(par)
 
       pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\grafico2.png"), plotBx.build, 1000)
+    }
+    
 
-        // Calcula la frecuencia de los goles por minuto
-        val goalsFrequency = contentFile2
+      charting3(contentFile2)
+      def charting3(data: List[Map[String, String]]): Unit = {
+        val goalsFrequency: List[(Double, Double)] = data
           .filter(_("goals_minute_regulation") != "NA")
           .filter(_("matches_tournament_id") == "WC-2022")
-          .map(row => row("goals_minute_regulation").toDouble)
+          .map(_("goals_minute_regulation").toDouble)
           .groupBy(identity)
-          .view.mapValues(_.size)
-          .toSeq
+          .view // Utilizar una vista para mejorar la eficiencia en el cálculo de valores
+          .mapValues(_.size.toDouble)
+          .toList
+          .sortBy(-_._2) // Ordenar en orden descendente por frecuencia
+          .take(5)
+          .map { case (minuto, frecuencia) => (minuto, frecuencia) } // Intercambiar minuto y frecuencia
 
+        println(goalsFrequency)
 
-      val plot8 = xyplot(
-        goalsfrecuency -> bar(horizontal = false,
-          width = 0.5,
-          fill = Color.gray2)
-      )(
-        par
-          .xlab("x axis label")
-          .ylab("y axis label")
-          .xlim(Some(1d -> 5))
-      )
-      show(plot8)
-
-
-
-
-
+        val plot8 = xyplot(
+          goalsFrequency -> line())(
+          par
+            .xlab("Minutos")
+            .ylab("Goles")
+            .main("Linea de Goles en el Mundial Qatar 2022")
+        )
+        pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\grafico5.png"), plot8.build, 1000)
+      }
 
 
 
 
-      // Genera el diagrama de barras
-     //)
+      def frecuenciajugadores(data: List[Map[String, String]]) = {
+        val playersfrecuency: List[(Double, Double)] = contentFile2
+          .distinct
+          .filterNot(row => row("players_given_name") == "not applicable" || row("players_female") == "1")
+          .map(t4 => ((t4("players_given_name"), t4("players_family_name"), t4("squads_player_id")), t4("squads_tournament_id").stripPrefix("WC-")))
+          .groupBy(_._1)
+          .view
+          .mapValues(años => (años.size, años.map(_._2).distinct.sorted))
+          .toList
+          .sortBy(_._2._1)
+          .take(10)
+
+        println(playersfrecuency)
+
+      }
   }
-
-
 }
+
+
+
+// Genera el diagrama de barras
+//)
 
 
 /*
@@ -118,9 +131,6 @@ object App {
      pngToFile(new File("C:\\Users\\agrab\\Documents\\ArchivoPIntegrador\\grafico.png"), histForwardShirtNumber.build, 1000)
    }
 */
-
-
-
 
 
 /*
